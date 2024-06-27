@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Collection</title>
+        <title>Procurement</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="DTI" name="author" />
