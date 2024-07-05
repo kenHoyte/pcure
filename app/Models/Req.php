@@ -10,8 +10,14 @@ class Req extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'request_item',
-        'status'
+        'item',
+        'remark_1',
+        'remark_2',
+        'remark_3',
+        'approver_id',
+        'authorizer_id',
+        'approved',
+        'authorized',
+        'location',
     ];
 }
