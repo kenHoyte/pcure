@@ -13,10 +13,18 @@ return new class extends Migration
     {
         Schema::create('reqs', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('request_item');
-            $table->string('status')->default('pending');
+            $table->string('item');
+            $table->string('remark_1')->nullable();
+            $table->string('remark_2')->nullable();
+            $table->string('remark_3')->nullable();
+            $table->unsignedBigInteger('approver_id')->nullable();
+            $table->unsignedBigInteger('authorizer_id')->nullable();
+            $table->boolean('approved')->default(false);
+            $table->boolean('authorized')->default(false);
+            $table->string('location')->nullable();
             $table->timestamps();
+
+            $table->index('item');
         });
     }
 

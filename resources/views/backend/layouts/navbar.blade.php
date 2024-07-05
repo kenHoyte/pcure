@@ -16,8 +16,8 @@
                 <div class="dropdown-menu">
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        Application
+                    <a href="javascript:void(0);" class="dropdown-item notify-item" data-toggle="modal" data-target="#exampleModalScrollable">
+                        Add Request
                     </a>
 
                     <!-- item-->
@@ -25,15 +25,9 @@
                         Software
                     </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        EMS System
-                    </a>
+                   
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        CRM App
-                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -67,7 +61,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
+                    <img class="" src="{{asset('assets/images/flags/us.jpg')}}" alt="Header Language" height="16">
                     <span class="d-none d-sm-inline-block ml-1">English</span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
@@ -75,25 +69,25 @@
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="assets/images/flags/spain.jpg" alt="user-image" class="mr-1" height="12">
+                        <img src="{{asset('assets/images/flags/spain.jpg')}}" alt="user-image" class="mr-1" height="12">
                         <span class="align-middle">Spanish</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="assets/images/flags/germany.jpg" alt="user-image" class="mr-1" height="12">
+                        <img src="{{asset('assets/images/flags/germany.jpg')}}" alt="user-image" class="mr-1" height="12">
                         <span class="align-middle">German</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="assets/images/flags/italy.jpg" alt="user-image" class="mr-1" height="12">
+                        <img src="{{asset('assets/images/flags/italy.jpg')}}" alt="user-image" class="mr-1" height="12">
                         <span class="align-middle">Italian</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="assets/images/flags/russia.jpg" alt="user-image" class="mr-1" height="12">
+                        <img src="{{asset('assets/images/flags/russia.jpg')}}" alt="user-image" class="mr-1" height="12">
                         <span class="align-middle">Russian</span>
                     </a>
                 </div>
@@ -171,38 +165,66 @@
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn header-item waves-effect"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"
+                    <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-2.jpg')}}"
                         alt="Header Avatar">
                     <span class="d-none d-sm-inline-block ml-1">Donald M.</span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item d-flex align-items-center justify-content-between"
-                        href="javascript:void(0)">
-                        <span>Inbox</span>
-                        <span>
-                            <span class="badge badge-pill badge-info">3</span>
-                        </span>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between"
-                        href="javascript:void(0)">
-                        <span>Profile</span>
-                    </a>
+                   
+                    
                     <a class="dropdown-item d-flex align-items-center justify-content-between"
                         href="javascript:void(0)">
                         Settings
                     </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between"
-                        href="javascript:void(0)">
-                        <span>Lock Account</span>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between"
-                        href="javascript:void(0)">
-                        <span>Log Out</span>
-                    </a>
+                   
+                    <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"> {{ __('Log Out') }} </i>
+                        </x-dropdown-link>
                 </div>
             </div>
 
         </div>
     </div>
 </header>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                <form method="POST" action={{route('addRequest')}}  enctype="multipart/form-data">
+                    @csrf
+                    
+                    <div class="form-group">
+                        <label for="p_tracking">Name</label>
+                        <input type="text" id="title" name="title" class="form-control" placeholder="Enter your text">
+                    </div>
+                    <div class="form-group">
+                        <label for="items">Request Item</label>
+                        <input type="text" id="request_item" name="request_item" class="form-control" placeholder="Enter your text">
+                    </div>
+                    <div class="form-group">
+                        <label for="items">Attachment</label>
+                        <input type="file" id="attachment" name="attachment" class="form-control" placeholder="Enter your text">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Save changes</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+  </div>
