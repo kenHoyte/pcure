@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/backend/layouts/main', function () {
+Route::get('/dashboard', function () {
     $reqs=Req::all();
     return view('backend.pages.requests', compact('reqs'));
 })->middleware(['auth', 'verified'])->name('dashboard');

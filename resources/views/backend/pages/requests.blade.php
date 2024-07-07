@@ -77,7 +77,7 @@ use App\Models\Branch;
                     data-target="#exampleModalScrollable">Add Request</button>
             </div>
             @endif
-           
+
 
             <div class="row">
                 <div class="col-12">
@@ -98,7 +98,7 @@ use App\Models\Branch;
                                         @if (Auth::user()->role !== "operator")
                                         <th>Action</th>
                                         @endif
-                                        
+
                                     </tr>
                                 </thead>
 
@@ -118,21 +118,20 @@ use App\Models\Branch;
                                             <span class="badge badge-soft-warning">Approved</span>
                                             @endif
                                         </td>
-                                            @if (Auth::user()->role == "manager" || Auth::user()->role == "officer")
-
+                                            @if (in_array(Auth::user()->role, ['manager', 'officer']))
                                             <td>
                                                 @if ((Auth::user()->role == "manager" && $req->approved) || (Auth::user()->role == "officer" && $req->authorized))
                                                 <button type="button" class="btn btn-info btn-sm waves-effect waves-light disabled" >{{Auth::user()->role == 'manager' ? 'Approve' : 'Authorize'}}</button>
-                                                @else                         
+                                                @else
                                                 <button type="button" class="btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target="#approveModal{{$req->id}}">{{Auth::user()->role == 'manager' ? 'Approve' : 'Authorize'}}</button>
-                                                @endif  
+                                                @endif
                                             </td>
                                             {{-- @elseif(Auth::user()->role == "officer")
                                             <td>
                                                 <button type="button" class="btn btn-info btn-sm waves-effect waves-light" data-toggle="modal" data-target="#authorizeModal{{$req->id}}">Authorize</button>
                                             </td> --}}
                                             @endif
-                                        
+
                                     </tr>
                                     <div class="modal fade" id="approveModal{{$req->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -146,7 +145,7 @@ use App\Models\Branch;
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                   
+
                                                     @if (Auth::user()->role == 'manager')
                                                     <form method="POST" action={{route('approve.request', $req->id)}}  enctype="multipart/form-data">
                                                         @csrf
@@ -154,7 +153,7 @@ use App\Models\Branch;
                                                         <p>Item: {{$req->item}}</p>
                                                         <p>Requested by: {{$req->requester->name}}</p>
                                                         <p>Location: {{$req->location}}</p>
-   
+
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">No</button>
                                                             <button type="submit" class="btn btn-primary waves-effect waves-light">Yes</button>
@@ -168,7 +167,7 @@ use App\Models\Branch;
                                                        <p>Requested by: {{$req->requester->name}}</p>
                                                        <p>Approved by: {{$req->approver->name}}</p>
                                                        <p>Location: {{$req->location}}</p>
-   
+
                                                        <div class="modal-footer">
                                                            <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">No</button>
                                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Yes</button>
@@ -176,12 +175,12 @@ use App\Models\Branch;
                                                       </form>
                                                       @endif
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
 
-                                        
-                                    
+
+
                                     @endforeach
 
 
@@ -260,7 +259,7 @@ use App\Models\Branch;
             document.getElementById('spinnerBtn').classList.add('hidden');
             document.getElementById('addBtn').classList.remove('hidden');
         }, 6000);
-        
+
     });
 </script>
 
