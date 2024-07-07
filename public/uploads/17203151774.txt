@@ -1,3 +1,0 @@
-"Customer Name","Branch","Total Collections","Total Amount (GHS)"
-"Frosty Bite","Kumasi","2","22,952,342.00"
-"Goil","Kumasi","1","5,000.00"
