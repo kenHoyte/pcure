@@ -14,14 +14,16 @@ return new class extends Migration
         Schema::create('reqs', function (Blueprint $table) {
             $table->id();
             $table->string('item');
-            $table->string('remark_1')->nullable();
-            $table->string('remark_2')->nullable();
-            $table->string('remark_3')->nullable();
-            $table->unsignedBigInteger('approver_id')->nullable();
-            $table->unsignedBigInteger('authorizer_id')->nullable();
-            $table->boolean('approved')->default(false);
-            $table->boolean('authorized')->default(false);
             $table->string('location')->nullable();
+            $table->string('branch')->nullable();
+            $table->unsignedBigInteger('requester_id')->nullable();
+            $table->string('req_remark')->nullable();
+            $table->boolean('approved')->default(false);
+            $table->unsignedBigInteger('approver_id')->nullable();
+            $table->string('appr_remark')->nullable();
+            $table->boolean('authorized')->default(false);
+            $table->unsignedBigInteger('authorizer_id')->nullable();
+            $table->string('auth_remark')->nullable();
             $table->timestamps();
 
             $table->index('item');

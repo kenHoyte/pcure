@@ -12,9 +12,14 @@ class Upload extends Model
     protected $fillable =[
         'file_name',
         'file_type',
+        'file_path',
         'user_id',
         'asset_id',
         'req_id',
         'remark'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

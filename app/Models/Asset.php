@@ -21,4 +21,12 @@ class Asset extends Model
         'repair',
         'status'
     ];
+
+    public function requester(){
+        return $this->belongsTo(User::class, 'requester_id');
+    }
+
+    public function uploads(){
+        return $this->hasMany(Upload::class, 'asset_id');
+    }
 }

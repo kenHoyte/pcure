@@ -31,6 +31,11 @@
                             class="mdi mdi-format-page-break"></i><span>Requests</span></a>
                    
                 </li>
+                <li>
+                    <a href="{{route('uploads')}}" class=" waves-effect"><i
+                            class="mdi mdi-format-page-break"></i><span>Uploads</span></a>
+                   
+                </li>
 
                 
 
