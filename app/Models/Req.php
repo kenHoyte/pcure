@@ -20,4 +20,8 @@ class Req extends Model
         'authorized',
         'location',
     ];
+
+    public function requester(){
+        return $this->belongsTo(User::class, 'requester_id');
+    }
 }

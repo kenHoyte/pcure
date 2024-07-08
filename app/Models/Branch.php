@@ -13,4 +13,9 @@ class Branch extends Model
         'branch_code',
         'branch_name'
     ];
+
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

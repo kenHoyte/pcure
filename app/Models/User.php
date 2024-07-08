@@ -47,4 +47,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function assets(){
+        return $this->hasMany(Asset::class, 'requester_id');
+    }
+    public function requests(){
+        return $this->hasMany(Req::class, 'requester_id');
+    }
 }

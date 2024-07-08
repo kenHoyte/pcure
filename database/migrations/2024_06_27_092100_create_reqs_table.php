@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('remark_1')->nullable();
             $table->string('remark_2')->nullable();
             $table->string('remark_3')->nullable();
+            $table->unsignedBigInteger('requester_id')->nullable();
             $table->unsignedBigInteger('approver_id')->nullable();
             $table->unsignedBigInteger('authorizer_id')->nullable();
             $table->boolean('approved')->default(false);
