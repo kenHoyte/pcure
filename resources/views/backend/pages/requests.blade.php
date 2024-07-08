@@ -108,7 +108,7 @@ use App\Models\Branch;
                                     <tr>
                                         <td>{{$key + 1}}</td>
                                         <td>{{$req->item}}</td>
-                                        <td>{{$req->requester->name}}</td>
+                                        <td>{{$req->requester?->name}}</td>
                                         <td>
                                             @if (!$req->approved)
                                             <span class="badge badge-soft-danger">Pending</span>
@@ -151,7 +151,7 @@ use App\Models\Branch;
                                                         @csrf
                                                         <h5>Are you sure you want to Approve this request with details below?</h5>
                                                         <p>Item: {{$req->item}}</p>
-                                                        <p>Requested by: {{$req->requester->name}}</p>
+                                                        <p>Requested by: {{$req->requester?->name}}</p>
                                                         <p>Location: {{$req->location}}</p>
 
                                                         <div class="modal-footer">
