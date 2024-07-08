@@ -164,8 +164,8 @@ use App\Models\Branch;
                                                        @csrf
                                                        <h5>Are you sure you want to Authorize this request with details below?</h5>
                                                        <p>Item: {{$req->item}}</p>
-                                                       <p>Requested by: {{$req->requester->name}}</p>
-                                                       <p>Approved by: {{$req->approver->name}}</p>
+                                                       <p>Requested by: {{$req->requester?->name}}</p>
+                                                       <p>Approved by: {{$req->approver?->name}}</p>
                                                        <p>Location: {{$req->location}}</p>
 
                                                        <div class="modal-footer">
