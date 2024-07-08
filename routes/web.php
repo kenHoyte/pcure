@@ -12,8 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $reqs=Req::all();
-    return view('backend.pages.requests', compact('reqs'));
+    return view('backend.pages.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::get('backend/main', function () {
