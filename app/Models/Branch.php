@@ -14,8 +14,11 @@ class Branch extends Model
         'branch_name'
     ];
 
-
     public function users(){
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class)->where('branch', $this->branch_code)->get();
+    }
+    
+    public function requests(){
+        return $this->hasMany(Req::class)->where('branch', $this->branch_code)->get();
     }
 }

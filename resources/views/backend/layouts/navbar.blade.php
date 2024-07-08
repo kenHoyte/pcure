@@ -165,24 +165,32 @@
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn header-item waves-effect"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/avatar-2.jpg')}}"
-                        alt="Header Avatar">
-                    <span class="d-none d-sm-inline-block ml-1">Donald M.</span>
+                    <i class="mdi mdi-account rounded-circle header-profile-user"></i>
+                    {{-- <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"
+                        alt="Header Avatar"> --}}
+                    <span class="d-none d-sm-inline-block ml-1">{{Auth::user()->name}}</span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                   
-                    
                     <a class="dropdown-item d-flex align-items-center justify-content-between"
-                        href="javascript:void(0)">
-                        Settings
-                    </a>
-                   
-                    <x-dropdown-link :href="route('logout')"
+                                    href="{{route('profile.edit')}}">
+                                    <span>Profile</span>
+                                    <span>
+                                        <span class="badge badge-pill badge-warning">1</span>
+                                    </span>
+                                </a>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+
+                        <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"> {{ __('Log Out') }} </i>
+                                            this.closest('form').submit();" class="dropdown-item text-danger">
+                                            <span>Log Out</span>
                         </x-dropdown-link>
+
+                    </form>
                 </div>
             </div>
 
@@ -207,12 +215,16 @@
                     @csrf
                     
                     <div class="form-group">
-                        <label for="p_tracking">Name</label>
-                        <input type="text" id="title" name="title" class="form-control" placeholder="Enter your text">
+                        <label for="item">Item</label>
+                        <input type="text" id="title" name="item" class="form-control" placeholder="Item">
                     </div>
                     <div class="form-group">
-                        <label for="items">Request Item</label>
-                        <input type="text" id="request_item" name="request_item" class="form-control" placeholder="Enter your text">
+                        <label for="remark">Remark</label>
+                        <input type="text" id="remark" name="req_remark" class="form-control" placeholder="Add Remark">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" class="form-control" placeholder="Location">
                     </div>
                     <div class="form-group">
                         <label for="items">Attachment</label>
@@ -220,7 +232,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Save changes</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Make Request</button>
                     </div>
                 </form>
             </div>

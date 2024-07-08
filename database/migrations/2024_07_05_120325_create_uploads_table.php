@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->string('file_name');
-            $table->string('file_type');
+            $table->string('file_path');
+            $table->string('file_type')->nullable();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('asset_id')->constrained()->nullable();            
-            $table->foreignId('req_id')->constrained()->nullable();            
+            $table->foreignId('asset_id')->nullable()->constrained();            
+            $table->foreignId('req_id')->nullable()->constrained();            
             $table->string('remark')->nullable();            
             $table->timestamps();
             
