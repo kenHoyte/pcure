@@ -20,6 +20,23 @@ class PageController extends Controller
         return view('backend.pages.requests', compact('reqs'));
     }
 
+    public function transfers(){
+        if(Auth::user()->role == 'officer'){
+            $reqs = Req::with('requester', 'approver')->where('approved', true)->get();
+        }else{
+            $reqs = Req::with('requester')->get();
+        }
+        return view('backend.pages.transfers', compact('reqs'));
+    }
+    public function assets(){
+        if(Auth::user()->role == 'officer'){
+            $reqs = Req::with('requester', 'approver')->where('approved', true)->get();
+        }else{
+            $reqs = Req::with('requester')->get();
+        }
+        return view('backend.pages.assets', compact('reqs'));
+    }
+
     public function uploads(){
         $uploads = DB::table('uploads')->latest()->paginate(5);
         return view('backend.pages.uploads', compact('uploads'));

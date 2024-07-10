@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('requests', [PageController::class, 'requests'])->name('requests');
     Route::get('fileUploads', [PageController::class, 'uploads'])->name('uploads');
     Route::post('upload', [UploadController::class, 'uploadFile'])->name('uploadFile');
+    Route::get('transfers', [PageController::class, 'transfers'])->name('transfers');
+    Route::get('dashboard/assets', [PageController::class, 'assets'])->name('assets');
 });
 
 Route::middleware(['auth', 'operator'])->group(function () {
