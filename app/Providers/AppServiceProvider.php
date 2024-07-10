@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\Admin;
 use App\Http\Middleware\Manager;
 use App\Http\Middleware\Officer;
 use App\Http\Middleware\Operator;
@@ -31,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
         $router->aliasMiddleware('operator', Operator::class);
         $router->aliasMiddleware('manager', Manager::class);
         $router->aliasMiddleware('officer', Officer::class);
+        $router->aliasMiddleware('admin', Admin::class);
     }
 }
