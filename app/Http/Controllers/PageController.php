@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Req;
 use App\Models\Upload;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +20,11 @@ class PageController extends Controller
             $reqs = Req::with('requester')->get();
         }
         return view('backend.pages.requests', compact('reqs'));
+    }
+    public function users(){
+        $users = User::all();
+        $branches = Branch::all();
+        return view('backend.pages.users', compact('users', 'branches'));
     }
 
     public function transfers(){

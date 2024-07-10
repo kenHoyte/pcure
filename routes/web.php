@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\UserController;
 use App\Models\Req;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::get('requests', [PageController::class, 'requests'])->name('requests');
     Route::get('fileUploads', [PageController::class, 'uploads'])->name('uploads');
     Route::post('upload', [UploadController::class, 'uploadFile'])->name('uploadFile');
+    Route::post('user/store', [UserController::class, 'addUser'])->name('addUser');
+    Route::post('user/edit/{id}', [UserController::class, 'editUser'])->name('editUser');
     Route::get('transfers', [PageController::class, 'transfers'])->name('transfers');
+    Route::get('users', [PageController::class, 'users'])->name('users');
     Route::get('dashboard/assets', [PageController::class, 'assets'])->name('assets');
 });
 

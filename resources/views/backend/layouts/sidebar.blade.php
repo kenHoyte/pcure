@@ -44,7 +44,10 @@
                 <li>
                     <a href="{{route('assets')}}" class=" waves-effect"><i
                             class="mdi mdi-format-page-break"></i><span>Assets</span></a>
-                   
+                </li>
+                <li>
+                    <a href="{{route('users')}}" class=" waves-effect"><i
+                            class="mdi mdi-format-page-break"></i><span>Users</span></a>
                 </li>
 
                 
